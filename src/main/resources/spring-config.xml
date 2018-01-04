@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--suppress SpringFacetInspection -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context
+            http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/mvc
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx
+            http://www.springframework.org/schema/tx/spring-tx.xsd
+            http://www.springframework.org/schema/jee
+            http://www.springframework.org/schema/jee/spring-tx.xsd">
+    <!-- 1. spring id和name都指bean的id，相同id或者name的bean只能存在一个，schema强制规定-->
+    <!-- 2. spring bean名称可以用alias属性指定一个别名，可以用别名做一个唯一标示-->
+    <bean id="main" class="spring.context.annotation.Main" />
+    <alias name="main" alias="mainAlias"/>
+    <!-- 3. 多个属性可以省略<properties>标签，用 p:来代替 -->
+    <!-- 3. -->
+    <!-- 3. -->
+    <!-- 3. -->
+    <!-- 3. -->
+    <!-- 3. -->
+    <!-- 3. -->
+    <bean id="context" class="spring.context.annotation.SpringContextAwareTest" />
+
+    <context:component-scan base-package="spring.beans.*,spring.core.extend.*"/>
+
+
+    <bean id="config" class="spring.beans.factory.annotation.ConfigPlaceHolder">
+        <property name="profile" value="dev"/>
+        <property name="locations">
+            <value>classpath:/${profile}/dev.properties</value>
+        </property>
+    </bean>
+</beans>

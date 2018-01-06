@@ -1,23 +1,32 @@
 package spring.beans.extend.example;
 
 import org.springframework.beans.factory.FactoryBean;
-import org.springframework.stereotype.Service;
 
-@Service("factoryTest")
-public class SpringFactoryBeanTest implements FactoryBean<String> {
+public class SpringFactoryBeanTest<T> implements FactoryBean<T> {
+
+    private Class<T> mapperInterface;
+    private GenericBeanFactory<T> beanFactory;
 
     @Override
-    public String getObject() throws Exception {
-        return "this is a factoryBean";
+    public T getObject(){
+        return beanFactory.getObjectFromSession();
     }
 
     @Override
-    public Class<?> getObjectType() {
-        return String.class;
+    public Class<T> getObjectType() {
+        return mapperInterface;
     }
 
     @Override
     public boolean isSingleton() {
-        return false;
+        return true;
+    }
+
+    public void setMapperInterface(Class<T> mapperInterface) {
+        this.mapperInterface = mapperInterface;
+    }
+
+    public void setBeanFactory(GenericBeanFactory<T> beanFactory) {
+        this.beanFactory = beanFactory;
     }
 }

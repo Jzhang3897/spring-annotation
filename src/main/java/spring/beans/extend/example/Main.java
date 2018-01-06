@@ -11,10 +11,7 @@ public class Main {
         //测试事件发布
         //applicationContext.publishEvent(eventObject);
 
-        //测试factoryBean
-        //System.out.println(applicationContext.getBean("factoryTest", String.class));
-
         //测试BeanDefinitionRegistryPostProcessor
-        //System.out.println("hello instance is " + applicationContext.getBean("hello", DefinitionBean.class).getUser());
+        System.out.println("hello instance is " + applicationContext.getBean("definitionBean", DefinitionBean.class).getUser());
     }
 }

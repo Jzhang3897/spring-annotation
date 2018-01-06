@@ -17,7 +17,8 @@ import java.util.Set;
 
 /**
  * Created by zhangjun on 2017/12/27.
- * http://blog.csdn.net/elim168/article/details/78056446
+ * http://blog.csdn.net/elim168/article/details/78056446 如何使用BeanDefinitionRegistryPostProcessor
+ * http://nobodyiam.com/2017/02/26/several-ways-to-extend-spring/  基于scheme的spring扩展举例
  */
 @Service
 public class BeanDefinitionRegistryPostProcessorTest implements BeanDefinitionRegistryPostProcessor {

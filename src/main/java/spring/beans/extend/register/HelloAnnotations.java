@@ -1,13 +1,16 @@
 package spring.beans.extend.register;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
+import org.springframework.context.annotation.Import;
+import spring.beans.extend.example.MyImportBeanDefinitionRegistrar;
+
+import java.lang.annotation.*;
 
 /**
  * Created by zhangjun on 2018/1/6.
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.TYPE)
+@Import(MyImportBeanDefinitionRegistrar.class)
 public @interface HelloAnnotations {
 }

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.support.GenericBeanDefinition;
 import org.springframework.stereotype.Service;
 import spring.beans.extend.register.DefinitionBean;
 
+/**
+ * Created by zhangjun on 2017/12/27.
+ */
 @Service
 public class BeanDefinitionRegistryPostProcessorTest implements BeanDefinitionRegistryPostProcessor {
     private String basePackage = "spring.beans.extend.register";
@@ -18,9 +21,9 @@ public class BeanDefinitionRegistryPostProcessorTest implements BeanDefinitionRe
         //registry.getBeanDefinition("beanName");
         GenericBeanDefinition beanDefinition = new GenericBeanDefinition();
         beanDefinition.setBeanClass(DefinitionBean.class);
-        beanDefinition.getPropertyValues().add("user","zhangjun");
+        beanDefinition.getPropertyValues().add("user", "zhangjun");
         beanDefinition.setLazyInit(false);
-        registry.registerBeanDefinition("hello",beanDefinition);
+        registry.registerBeanDefinition("hello", beanDefinition);
     }
 
     @Override

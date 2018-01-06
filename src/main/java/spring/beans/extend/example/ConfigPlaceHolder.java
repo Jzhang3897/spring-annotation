@@ -12,13 +12,17 @@ import java.util.List;
 import java.util.Properties;
 
 /**
+ * Created by zhangjun on 2017/12/27.
+ * <p>
  * 其他包出现过，只是为了粘贴过来总结spring扩展用法
+ * </p>
  */
 public class ConfigPlaceHolder extends PropertySourcesPlaceholderConfigurer {
     private String profile;
     private static final String DEFAULT_PROFILE_NAME = "profile.properties";
     private String profileFileName;
     private Properties properties;
+
     /**
      * 加载profile属性
      */
@@ -49,8 +53,8 @@ public class ConfigPlaceHolder extends PropertySourcesPlaceholderConfigurer {
             List<Resource> resources = new ArrayList<>();
             if (locations != null) {
                 for (Resource location : locations) {
-                    ClassPathResource classPathResource = (ClassPathResource)location;
-                    Resource resource = new ClassPathResource(classPathResource.getPath().replace("${profile}",profile));
+                    ClassPathResource classPathResource = (ClassPathResource) location;
+                    Resource resource = new ClassPathResource(classPathResource.getPath().replace("${profile}", profile));
                     if (checkClassPathResource(resource)) {
                         logger.info("load resource [" + resource.getFilename() + "]");
                         System.out.println("load resource [" + resource.getFilename() + "]");
@@ -69,7 +73,7 @@ public class ConfigPlaceHolder extends PropertySourcesPlaceholderConfigurer {
     @Override
     public Properties mergeProperties() throws IOException {
         Properties properties = super.mergeProperties();
-        properties.put("profile",profile);
+        properties.put("profile", profile);
         return properties;
     }
 

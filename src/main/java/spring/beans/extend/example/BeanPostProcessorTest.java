@@ -10,7 +10,6 @@ import spring.beans.extend.register.DefinitionBean;
  * <p>
  * 对于一个BeanPostProcessor来说，它的目的在于修改已经由BeanDefinitionRegistry注册的BeanDefinition
  * 在spring中定义一个bean，可能是spring自身定义的，也有可能是用户想动态生成的
- * </p>
  */
 @Service
 public class BeanPostProcessorTest implements BeanPostProcessor {

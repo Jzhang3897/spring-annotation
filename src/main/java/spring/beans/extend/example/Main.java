@@ -9,12 +9,12 @@ public class Main {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-config.xml");
         SpringEventObject eventObject = new SpringEventObject("this is a event");
         //测试事件发布
-        applicationContext.publishEvent(eventObject);
+        //applicationContext.publishEvent(eventObject);
 
         //测试factoryBean
-        System.out.println(applicationContext.getBean("factoryTest", String.class));
+        //System.out.println(applicationContext.getBean("factoryTest", String.class));
 
         //测试BeanDefinitionRegistryPostProcessor
-        System.out.println("hello instance is " + applicationContext.getBean("hello", DefinitionBean.class).getUser());
+        //System.out.println("hello instance is " + applicationContext.getBean("hello", DefinitionBean.class).getUser());
     }
 }

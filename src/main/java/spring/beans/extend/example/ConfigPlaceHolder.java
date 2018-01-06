@@ -15,7 +15,6 @@ import java.util.Properties;
  * Created by zhangjun on 2017/12/27.
  * <p>
  * 其他包出现过，只是为了粘贴过来总结spring扩展用法
- * </p>
  */
 public class ConfigPlaceHolder extends PropertySourcesPlaceholderConfigurer {
     private String profile;

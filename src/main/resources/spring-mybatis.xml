@@ -20,7 +20,7 @@
             http://www.springframework.org/schema/jee/spring-tx.xsd">
     <!-- 1. spring id和name都指bean的id，相同id或者name的bean只能存在一个，schema强制规定-->
     <!-- 2. spring bean名称可以用alias属性指定一个别名，可以用别名做一个唯一标示-->
-    <bean id="main" class="spring.context.annotation.Main" />
+    <bean id="main" class="spring.context.annotation.Main"/>
     <alias name="main" alias="mainAlias"/>
     <!-- 3. 多个属性可以省略<properties>标签，用 p:来代替 -->
     <!-- 3. -->
@@ -29,9 +29,9 @@
     <!-- 3. -->
     <!-- 3. -->
     <!-- 3. -->
-    <bean id="context" class="spring.context.annotation.SpringContextAwareTest" />
+    <bean id="context" class="spring.context.annotation.SpringContextAwareTest"/>
 
-    <context:component-scan base-package="spring.beans.extend.example*"/>
+    <context:component-scan base-package="spring.beans.*,spring.core.*"/>
 
 
     <bean id="config" class="spring.beans.factory.annotation.ConfigPlaceHolder">
@@ -39,5 +39,16 @@
         <property name="locations">
             <value>classpath:/${profile}/dev.properties</value>
         </property>
+    </bean>
+    <bean id="dataSource"/>
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="configLocation" value="classpath:spring-config.xml"/>
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--注入sqlSessionFactory sqlSessionFactoryBeanName使用后注入的方式防止它在加载jdbc配置文件之前就初始化它-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+        <!-- 给出扫描Dao接口包 -->
+        <property name="basePackage" value="spring.beans.extend.register"/>
     </bean>
 </beans>
